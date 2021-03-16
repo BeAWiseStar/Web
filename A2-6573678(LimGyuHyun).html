@@ -1,0 +1,418 @@
+<!-- 
+Name: Lim Gyu Hyun
+Student Number: 6573678
+Assignment2
+-->
+<!-- part 1 --> 
+<html>
+    <head>
+    </head></br></br>
+    <table border = "1" style = "border : 1px solid black; border-collapse: collapse;" width = "50%">
+        <tr>
+            <th colspan = "4" style = "background-color: lightblue; height: 40px;"> Student Details </th>
+        </tr>
+        <tr>
+            <td width = "25%" rowspan ="2" valign = "middle">Student Number / Name / Email </td>
+            <td style = "height: 25px; padding:10px" width = "10%"> 6573678 </td>
+            <td style = "height: 25px; padding:10px" width = "20%" width = "25%"> Lim Gyu Hyun </td>
+            <td style = "height: 25px; padding:10px" width = "15%" width = "35%"><a href = 
+                "ghl415@uowmail.edu.au">ghl415@uowmail.edu.au</a></td>
+        </tr>
+        <tr>
+            <td style = "height: 25px; padding:10px" width = "10%"><pre> </pre></td>
+            <td style = "height: 25px; padding:10px" width = "20%"><pre> </pre></td>
+            <td style = "height: 25px; padding:10px" width = "15%"><pre> </pre></td>
+        </tr>
+        <tr>
+            <th colspan = "4" style = "background-color: lightblue; height: 40px"> Assignment Detail </th>
+        </tr>
+
+        <tr>
+            <td style = "height: 25px; padding:10px"> Subject Code </td>
+            <td colspan ="2" style = "height: 25px; padding:10px"> CSIT128 </td>
+            <td style = "padding:10px" rowspan ="2"> <pre>
+&#9864; Assignment 1 (Individual)
+&#9864; Assignment 2 (group of 2)
+&#9864; Assignment 3 (group of 2)
+                </pre> </td>
+        </tr>
+        <tr>
+            <td style = "height: 25px; padding:10px"> Assignment Number </td>
+            <td style = "height: 25px; padding:10px" colspan ="2"> 2 </td>
+        </tr>
+    </table>
+
+</br></br></br>
+<style>
+    #nameError{
+        color: red;
+        font-style: italic;
+    }
+    #codeError{
+        color: red;
+        font-style: italic;
+    }
+    #idError,#pNameError,#LnumError,#HnumError,#pButton,#guessR1,#guessR2,#guessR3,#guessR4,#guessR5{
+        color: blue;
+        font-style: italic;
+    }
+
+</style>
+
+<!-- part 2 --> 
+
+<!-- name -->
+<form action = "myService" method = "get" onSubmit = "return validateForm()">
+    Name : <input id = "name" type = "text" name = "name" pattern = "^\D+\w*$" required>
+    <span id = "nameError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<script>
+    function validateForm(){
+        var module = document.getElementById("name").value;
+        if(module != null || module.trim() != ""){
+            document.getElementById("nameError").innerHTML = "Input name is ok";
+        return true;
+        }
+        return false;
+    }
+</script>
+
+<!-- module code -->
+<form action = "myService" method = "get" onSubmit = "return validateForm1()">
+    Module : <input id = "moduleCode" type = "text" name = "moduleCode" pattern = "^[A-Z]{4}[1-9][0-9][0-9]$" required>
+    <span id = "codeError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<script>
+    function validateForm1(){
+        var module = document.getElementById("moduleCode").value;
+        if(module != null || module.trim() != ""){
+            document.getElementById("codeError").innerHTML = "Input module code is ok";
+        return false;
+        }
+        return true;   
+    }
+</script>
+
+<!-- current date -->
+Current Date : <input type = "text" id = "demo" size = "26" readonly = "readonly"/>
+
+<script type ="text/javascript">
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+const dayNames = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];  
+    function getDate(){
+        var today = new Date();
+        var date = today.getDate();
+        if(date < 10){
+            date = "0" + date;
+        }
+        var month = monthNames[today.getMonth()];
+        var year = today.getFullYear();
+        var day = dayNames[today.getDay()];
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var ampm = "am";
+        if(hour > 12){
+            hour = hour - 12;
+            ampm = "pm";
+        }
+        if(minute < 10){
+            minute = "0" + minute;
+        }
+        return date+' '+month+' '+year+' '+ day+' '+hour+':'+minute +' '+ampm;
+    }
+    document.getElementById("demo").value = getDate();
+</script>
+</br></br>
+
+<!-- number of weeks till end of the year -->
+Remain Days : <input type = "text" id = "differenceBt" size = "25" readonly = "readonly"/>
+<script type = "text/javascript">
+    var today = new Date();
+    var lastDay = new Date("12/31/2020");
+    var difference = Math.ceil((lastDay - today)/86400000);
+    var week = Math.floor(difference/7);
+    var day = Math.ceil(difference%7);
+    document.getElementById("differenceBt").value 
+    = difference+" days is "+week+" weeks and "+day+" days"
+</script>
+</br></br>
+
+<!-- source language -->
+<form action="https://translate.google.com" method="get">
+    Translate from
+    <select name="sl">
+      <option value="en" selected>English</option>
+      <option value="zh-TW">Chinese</option>
+      <option value="ms">Malay</option> 
+      <option value="id">Indonesian</option> 
+      <option value="ja">Japanese</option> 
+      <option value="ko">Korean</option> 
+    </select>
+</br>
+
+<!-- target language -->  
+    To
+        <input type = "radio" name = "tl" value = "en"> English
+        <input type = "radio" name = "tl" value = "zh-TW"> Chinese
+        <input type = "radio" name = "tl" value = "ms"> Malay
+        <input type = "radio" name = "tl" value = "id"> Indonesian
+        <input type = "radio" name = "tl" value = "ja"> Japanese
+        <input type = "radio" name = "tl" value = "ko" checked> Korean
+        
+    <br/><br/>
+
+<!-- source language contents -->
+<table>
+    <tr>
+        <td>
+            <textarea id= "textArea" rows="4" cols="40" name="text">how are you</textarea> 
+        </br>
+        <!-- submit button -->   
+            <input type="submit" value="Translate">
+        
+        <!-- reset button -->
+            <input type="reset" value="Reset form">
+        </form>
+        </td>
+
+        <!-- find text -->
+        <td>
+        <form action = "fANDr" method = "get" onSubmit = "return fAr()">
+            Find text &nbsp;&nbsp;: <input id = "ftext" type = "text" name = "ftext"> 
+        </br>
+        <!-- replacement text -->
+            Replace to : <input id = "rtext" type = "text" name = "rtext">
+            
+        <!-- find and replace button -->
+            <input type="submit" value="Replace">
+        </form>
+        </td>
+    </tr>
+</table>
+
+<script type = "text/javascript">
+    function fAr(){
+        var str = document.getElementById("textArea").value;
+        var from = document.getElementById("ftext").value;
+        var to = document.getElementById("rtext").value;
+        str = str.split(from).join(to);
+        document.getElementById("textArea").value = str;
+    }
+</script>
+</br></br></br>
+
+
+<!-- part3-->
+
+-- Number Guess Game --
+</br></br>
+<!-- player ID-->
+<form action = "myService" method = "get" onSubmit = "return validateID()">
+    Player ID : <input id = "ID" type = "text" name = "name" pattern = "^[SGE][0-9]{2,4}$" required>
+    <span id = "idError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<script>
+    function validateID(){
+        var module = document.getElementById("ID").value;
+        if(module != null || module.trim() != ""){
+            document.getElementById("idError").innerHTML = "ID is ok";
+        return true;
+        }
+        return false;
+    }
+</script>
+
+<!-- player Name-->
+<form action = "myService" method = "get" onSubmit = "return validatePname()">
+    Player Name : <input id = "pName" type = "text" name = "pname" pattern = "^\D{1,10}$" required>
+    <span id = "pNameError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<script>
+    function validatePname(){
+        var module = document.getElementById("pName").value;
+        if(module != null || module.trim() != ""){
+            document.getElementById("pNameError").innerHTML = "Player Name is ok";
+        return true;
+        }
+        return false;
+    }
+</script>
+
+<!-- lowest number -->
+<form action = "myService" method = "get" onSubmit = "return validateLowest()">
+    Lowest Number : <input id = "Lnum" type = "text" name = "Lnum" pattern = "^\d+$" required>
+    <span id = "LnumError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<!-- highest number -->
+<form action = "myService" method = "get" onSubmit = "return validateHighest()">
+    Highest Number : <input id = "Hnum" type = "text" name = "Hnum" pattern = "^\d+$" required>
+    <span id = "HnumError"></span>
+</br>
+<input type = "submit" value = "Submit">
+</form> 
+
+<!-- play button -->
+<form action = "myService" method = "get" onSubmit = "return randomGenerator()">
+<input type = "submit" value = "Play Button"> <span id = "pButton"></span>
+</form> 
+
+<!-- your guess --><!-- guess button-->
+<form action = "myService" method = "get" onSubmit = "return playGame1()">
+    Your Guess 1 : <input id = "yNum1" type = "text" name = "yNum1">
+    <span id = "guessR1"></span>
+<input type = "submit" value = "Submit"></br>
+ 
+<form action = "myService" method = "get" onSubmit = "return playGame2()">
+    Your Guess 2 : <input id = "yNum2" type = "text" name = "yNum2">
+    <span id = "guessR2"></span>
+<input type = "submit" value = "Submit"></br>
+
+<form action = "myService" method = "get" onSubmit = "return playGame3()">
+    Your Guess 3 : <input id = "yNum3" type = "text" name = "yNum3">
+    <span id = "guessR3"></span>
+<input type = "submit" value = "Submit"></br>
+
+<form action = "myService" method = "get" onSubmit = "return playGame4()">
+    Your Guess 4 : <input id = "yNum4" type = "text" name = "yNum4">
+    <span id = "guessR4"></span>
+<input type = "submit" value = "Submit"></br>
+
+<form action = "myService" method = "get" onSubmit = "return playGame5()">
+    Your Guess 5 : <input id = "yNum5" type = "text" name = "yNum5">
+    <span id = "guessR5"></span>
+<input type = "submit" value = "Submit">
+</form> 
+
+<!-- all functions -->
+<script>
+    function validateLowest(){
+        var module = document.getElementById("Lnum").value;
+        if(module != null || module.trim() != ""){
+            document.getElementById("LnumError").innerHTML = "Lowest number is ok";
+        return true;
+        }
+        return false;
+    }
+    function validateHighest(){
+        var high = parseInt(document.getElementById("Hnum").value);
+        var low = parseInt(document.getElementById("Lnum").value);
+    
+        if(high <= low){
+            document.getElementById("HnumError").innerHTML = "(WARNING) Highest number must be bigger than Lowest number";
+        }
+        else if(high > low){
+            document.getElementById("HnumError").innerHTML = "Highest number is ok";
+        }
+    }
+
+    var randomNum;
+    function randomGenerator(){
+        var low = document.getElementById("Lnum").value;
+        var high = document.getElementById("Hnum").value;
+        var demo = high - low;
+        var random = high - Math.ceil((demo*Math.random()));
+        if(low != 0 && high != 0){
+            document.getElementById("pButton").innerHTML = "A random number has created";
+        }
+        else if((low == 0 && high != 0) || (low != 0 && high == 0)){
+            document.getElementById("pButton").innerHTML = "Fill both lowest and highest";
+        }
+        randomNum = random;
+    }
+    function playGame1(){
+        var yGuess1 = parseInt(document.getElementById("yNum1").value);
+        if(randomNum == yGuess1){
+            document.getElementById("guessR1").innerHTML = "Your guess number is " + yGuess1 + " and it is the correct answer";
+            document.getElementById("guessR2").innerHTML = "Your Guess1 is the correct answer";
+            document.getElementById("guessR3").innerHTML = "Your Guess1 is the correct answer";
+            document.getElementById("guessR4").innerHTML = "Your Guess1 is the correct answer";
+            document.getElementById("guessR5").innerHTML = "Your Guess1 is the correct answer";
+        }
+        else if(randomNum < yGuess1){
+            document.getElementById("guessR1").innerHTML = "Your guess number is " + yGuess1 + " and it is too high";
+            playGame2();
+        }
+        else if(randomNum > yGuess1){
+            document.getElementById("guessR1").innerHTML = "Your guess number is " + yGuess1 + " and it is too low";
+            playGame2();
+        }
+    }
+    function playGame2(){
+        var yGuess2 = parseInt(document.getElementById("yNum2").value);
+        if(randomNum == yGuess2){
+            document.getElementById("guessR2").innerHTML = "Your guess number is " + yGuess2 + " and it is the correct answer";
+            document.getElementById("guessR3").innerHTML = "Your Guess2 is the correct answer";
+            document.getElementById("guessR4").innerHTML = "Your Guess2 is the correct answer";
+            document.getElementById("guessR5").innerHTML = "Your Guess2 is the correct answer";
+        }
+        else if(randomNum < yGuess2){
+            document.getElementById("guessR2").innerHTML = "Your guess number is " + yGuess2 + " and it is too high";
+            playGame3();
+        }
+        else if(randomNum > yGuess2){
+            document.getElementById("guessR2").innerHTML = "Your guess number is " + yGuess2 + " and it is too low";
+            playGame3();
+        }
+    }
+    function playGame3(){
+        var yGuess3 = parseInt(document.getElementById("yNum3").value);
+        if(randomNum == yGuess3){
+            document.getElementById("guessR3").innerHTML = "Your guess number is " + yGuess3 + " and it is the correct answer";
+            document.getElementById("guessR4").innerHTML = "Your Guess3 is the correct answer";
+            document.getElementById("guessR5").innerHTML = "Your Guess3 is the correct answer";
+        }
+        else if(randomNum < yGuess3){
+            document.getElementById("guessR3").innerHTML = "Your guess number is " + yGuess3+ " and it is too high";
+            playGame4();
+        }
+        else if(randomNum > yGuess3){
+            document.getElementById("guessR3").innerHTML = "Your guess number is " + yGuess3 + " and it is too low";
+            playGame4();
+        }
+    }
+    function playGame4(){
+        var yGuess4 = parseInt(document.getElementById("yNum4").value);
+        if(randomNum == yGuess4){
+            document.getElementById("guessR4").innerHTML = "Your guess number is " + yGuess4 + " and it is the correct answer";
+            document.getElementById("guessR5").innerHTML = "Your Guess4 is the correct answer";
+        }
+        else if(randomNum < yGuess4){
+            document.getElementById("guessR4").innerHTML = "Your guess number is " + yGuess4 + " and it is too high";
+            playGame5();
+        }
+        else if(randomNum > yGuess4){
+            document.getElementById("guessR4").innerHTML = "Your guess number is " + yGuess4 + " and it is too low";
+            playGame5();
+        }
+    }
+    function playGame5(){
+        var yGuess5 = parseInt(document.getElementById("yNum5").value);
+        if(randomNum == yGuess5){
+            document.getElementById("guessR5").innerHTML = "Your guess number is " + yGuess5 + " and it is the correct answer";
+        }
+        else if(randomNum < yGuess5){
+            document.getElementById("guessR5").innerHTML = "Your guess number is " + yGuess5 + " and it is too high and this is the last try";
+        }
+        else if(randomNum > yGuess5){
+            document.getElementById("guessR5").innerHTML = "Your guess number is " + yGuess5 + " and it is too low and this is the last try";
+        }
+    }
+</script>
+</html>
+
